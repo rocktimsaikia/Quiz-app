@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
+import FrontPage from "./components/FrontPage"
+import Easy from "./components/questions/Easy"
+import Medium from "./components/questions/Medium"
+import Hard from "./components/questions/Hard"
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <h1><Link to="/" style={{ textDecoration: "none" }}>Quiz App <span role="img" aria-label="rocket emoji">🚀</span></Link></h1>
+        <Switch>
+          <Route path="/" component={FrontPage} exact />
+          <Route path="/easy" component={Easy} />
+          <Route path="/medium" component={Medium} />
+          <Route path="/hard" component={Hard} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
